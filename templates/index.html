@@ -1,0 +1,11 @@
+<!-- templates/index.html -->
+{% extends "layout.html" %}
+{% block content %}
+<h3>Upload Dataset Qur’an (CSV)</h3>
+<form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+  <div class="mb-3">
+    <input type="file" name="dataset" accept=".csv" class="form-control" required>
+  </div>
+  <button type="submit" class="btn btn-success">Upload & Lanjutkan</button>
+</form>
+{% endblock %}

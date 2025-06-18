@@ -1,0 +1,28 @@
+<!-- templates/detail.html -->
+{% extends 'layout.html' %}
+{% block content %}
+  <h3>{{ surah }}:{{ ayah }}</h3>
+  <p class="fs-5">{{ text }}</p>
+
+  <div class="mt-4">
+    <form action="{{ url_for('summarize', surah=surah, ayah=ayah) }}" method="POST">
+      <button class="btn btn-warning">🔄 Ringkas Ayat</button>
+    </form>
+    <form action="{{ url_for('ask_question', surah=surah, ayah=ayah) }}" method="POST" class="mt-2">
+      <input type="text" name="question" class="form-control" placeholder="Tanyakan sesuatu tentang ayat ini" required>
+      <button class="btn btn-primary mt-2">Tanya AI 💬</button>
+    </form>
+  </div>
+
+  {% if summary %}
+    <div class="alert alert-info mt-4">
+      <strong>Ringkasan:</strong><br> {{ summary }}
+    </div>
+  {% endif %}
+
+  {% if answer %}
+    <div class="alert alert-success mt-4">
+      <strong>Jawaban AI:</strong><br> {{ answer }}
+    </div>
+  {% endif %}
+{% endblock %}

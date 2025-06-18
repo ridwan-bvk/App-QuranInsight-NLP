@@ -1,0 +1,49 @@
+<!-- templates/dashboard.html -->
+{% extends "layout.html" %}
+{% block content %}
+<div class="dashboard-container">
+  <div class="dashboard-header">
+    <h2 class="dashboard-title">NLP Qur'an Insight</h2>
+    <p class="dashboard-subtitle">Explore advanced NLP techniques for Qur'anic text analysis</p>
+  </div>
+
+  <div class="dashboard-grid">
+    <div class="card feature-card" onclick="window.location=`{{ url_for('vector') }}`">
+      <div class="card-icon">🧠</div>
+      <h3 class="card-title">Word Vector Representations</h3>
+      <p class="card-description">Explore semantic relationships between words</p>
+    </div>
+
+    <div class="card feature-card" onclick="window.location=`{{ url_for('seq2seq') }}`">
+      <div class="card-icon">🔄</div>
+      <h3 class="card-title">Sequence to Sequence</h3>
+      <p class="card-description">Text generation and translation models</p>
+    </div>
+
+    <div class="card feature-card" onclick="window.location=`{{ url_for('transformers') }}`">
+      <div class="card-icon">⚙️</div>
+      <h3 class="card-title">Transformers</h3>
+      <p class="card-description">Advanced attention-based models</p>
+    </div>
+
+    <div class="card feature-card" onclick="window.location=`{{ url_for('fine_tune') }}`">
+      <div class="card-icon">🧪</div>
+      <h3 class="card-title">Fine Tuning LLM</h3>
+      <p class="card-description">Customize language models for your needs</p>
+    </div>
+
+    <div class="card feature-card" onclick="window.location=`{{ url_for('rag') }}`">
+      <div class="card-icon">📚</div>
+      <h3 class="card-title">RAG</h3>
+      <p class="card-description">Retrieval Augmented Generation</p>
+    </div>
+
+    <div class="card feature-card" onclick="window.location=`{{ url_for('ollama') }}`">
+      <div class="card-icon">🌐</div>
+      <h3 class="card-title">OLLAMA API QA</h3>
+      <p class="card-description">Question answering with OLLAMA</p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

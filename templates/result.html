@@ -1,0 +1,19 @@
+<!-- templates/result.html -->
+{% extends 'layout.html' %}
+{% block content %}
+  <h3>Hasil untuk: <em>{{ query }}</em></h3>
+  {% if results %}
+    <ul class="list-group">
+      {% for item in results %}
+        <li class="list-group-item">
+          <strong>{{ item['surah'] }}:{{ item['ayah'] }}</strong><br>
+          {{ item['text'] }}
+          <br>
+          <a href="{{ url_for('detail', surah=item['surah'], ayah=item['ayah']) }}" class="btn btn-outline-success btn-sm mt-2">Lihat Detail</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <div class="alert alert-warning mt-3">Tidak ditemukan hasil yang sesuai.</div>
+  {% endif %}
+{% endblock %}
