@@ -1,49 +1,88 @@
 <!-- templates/dashboard.html -->
 {% extends "layout.html" %}
 {% block content %}
-<div class="dashboard-container">
-  <div class="dashboard-header">
+
+<div class="dashboard-header">
     <h2 class="dashboard-title">NLP Qur'an Insight</h2>
     <p class="dashboard-subtitle">Explore advanced NLP techniques for Qur'anic text analysis</p>
   </div>
+<!-- Upload Dataset CSV -->
+<div class="card p-4 mb-4 shadow-sm">
+  <h5 class="mb-3">📤 Upload CSV Dataset</h5>
 
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+          {{ message|safe }}
+                 {% if 'uploaded_file' in session %}
+                    <a href="{{ url_for('clear_session') }}" class="float-end btn btn-sm btn-outline-danger">
+                        Hapus Data
+                    </a>
+                {% endif %}
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data" class="row g-2 align-items-center">
+    <div class="col-md-8">
+      <input type="file" name="dataset" accept=".csv" class="form-control" required>
+    </div>
+    <div class="col-md-auto">
+      <button type="submit" class="btn btn-success">📥 Upload & Continue</button>
+    </div>
+    {% if show_template %}
+    <div class="col-12 mt-2">
+      <a href="{{ url_for('download_template') }}" class="btn btn-outline-secondary">📄 Download CSV Template</a>
+    </div>
+    {% endif %}
+  </form>
+</div>
+
+<!-- Fitur NLP Cards -->
+<!-- <div class="row row-cols- row-cols-md-2 g-4"> -->
+<div class="dashboard-container">
   <div class="dashboard-grid">
-    <div class="card feature-card" onclick="window.location=`{{ url_for('vector') }}`">
+    <div class="card feature-card" onclick="window.location=`{{ url_for('vector.vector_analysis') }}`">
       <div class="card-icon">🧠</div>
       <h3 class="card-title">Word Vector Representations</h3>
       <p class="card-description">Explore semantic relationships between words</p>
     </div>
 
-    <div class="card feature-card" onclick="window.location=`{{ url_for('seq2seq') }}`">
+    <div class="card feature-card" onclick="window.location=`{{ url_for('seq2seq.seq2seq_analysis') }}`">
       <div class="card-icon">🔄</div>
       <h3 class="card-title">Sequence to Sequence</h3>
       <p class="card-description">Text generation and translation models</p>
     </div>
 
-    <div class="card feature-card" onclick="window.location=`{{ url_for('transformers') }}`">
+    <div class="card feature-card" onclick="window.location=`{{ url_for('transformers.transformers_home') }}`">
       <div class="card-icon">⚙️</div>
       <h3 class="card-title">Transformers</h3>
       <p class="card-description">Advanced attention-based models</p>
     </div>
 
-    <div class="card feature-card" onclick="window.location=`{{ url_for('fine_tune') }}`">
+    <div class="card feature-card" onclick="window.location=`{{ url_for('fine_tune.fine_tune_home') }}`">
       <div class="card-icon">🧪</div>
       <h3 class="card-title">Fine Tuning LLM</h3>
       <p class="card-description">Customize language models for your needs</p>
     </div>
 
-    <div class="card feature-card" onclick="window.location=`{{ url_for('rag') }}`">
+    <div class="card feature-card" onclick="window.location=`{{ url_for('rag.rag_home') }}`">
       <div class="card-icon">📚</div>
       <h3 class="card-title">RAG</h3>
       <p class="card-description">Retrieval Augmented Generation</p>
     </div>
 
-    <div class="card feature-card" onclick="window.location=`{{ url_for('ollama') }}`">
+    <div class="card feature-card" onclick="window.location=`{{ url_for('ollama.ollama_home') }}`">
       <div class="card-icon">🌐</div>
       <h3 class="card-title">OLLAMA API QA</h3>
       <p class="card-description">Question answering with OLLAMA</p>
     </div>
   </div>
+<!-- </div> -->
 </div>
+
 
 {% endblock %}

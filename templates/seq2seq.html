@@ -1,0 +1,115 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <!-- Navigation -->
+    <div class="d-flex justify-content-between mb-4">
+        <a href="{{ url_for('index') }}" class="btn btn-outline-primary">
+            <i class="fas fa-arrow-left"></i> Dashboard
+        </a>
+        <a href="{{ url_for('vector.vector_analysis') }}" class="btn btn-outline-success">
+            <i class="fas fa-project-diagram"></i> Word Vector
+        </a>
+    </div>
+
+    {% if error %}
+        <!-- <div class="alert alert-danger">{{ error }}</div> -->
+       
+        <div class="alert alert-danger">
+            <h4><i class="fas fa-exclamation-triangle"></i> Error Processing</h4>
+            <p>{{ error }}</p>
+            <hr>
+            <p class="mb-0">Pastikan:</p>
+            <ul>
+                <li>File CSV mengandung minimal 20 ayat</li>
+                <li>Teks dalam format yang benar</li>
+                <li>Tidak ada karakter khusus</li>
+            </ul>
+        </div>
+
+    {% else %}
+        <!-- Header -->
+        <div class="text-center mb-5">
+            <h2 class="text-primary">Sequence-to-Sequence Analysis</h2>
+            <p class="lead">Model prediksi teks berdasarkan pola terjemahan Al-Quran</p>
+        </div>
+
+        <!-- Data Preview -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-info text-white">
+                <h4><i class="fas fa-table"></i> Contoh Data</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Surat</th>
+                                <th>Ayat</th>
+                                <th>Teks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in sample_data %}
+                            <tr>
+                                <td>{{ row.Surat }}</td>
+                                <td>{{ row.Ayat }}</td>
+                                <td>{{ row.Teks|truncate(40) }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Training Visualization -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-success text-white">
+                <h4><i class="fas fa-chart-line"></i> Proses Training</h4>
+            </div>
+            <div class="card-body text-center">
+                <img src="data:image/png;base64,{{ plot_url }}" class="img-fluid rounded" style="max-height: 400px;">
+                <div class="mt-3">
+                    <p class="text-muted">Perkembangan loss function selama training menunjukkan kemampuan model belajar pola teks.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Prediction Demo -->
+        <div class="card shadow-sm">
+            <div class="card-header bg-warning text-dark">
+                <h4><i class="fas fa-lightbulb"></i> Demo Prediksi</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Input Teks:</label>
+                            <div class="alert alert-secondary">
+                                <strong>{{ original_text }}</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Prediksi Model:</label>
+                            <div class="alert alert-primary">
+                                <strong>{{ predicted_text }}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-info mt-3">
+                    <h5><i class="fas fa-analysis"></i> Analisis:</h5>
+                    <ul>
+                        <li>Model belajar pola karakter dalam terjemahan</li>
+                        <li>Prediksi menunjukkan kemiripan struktur kalimat</li>
+                        <li>Loss yang menandakan pembelajaran efektif</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

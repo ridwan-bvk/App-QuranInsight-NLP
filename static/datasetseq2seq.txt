@@ -1,0 +1,16 @@
+Surat,Ayat,Teks
+Al-Fatihah,1,Dengan nama Allah Yang Maha Pengasih, Maha Penyayang
+Al-Fatihah,2,Segala puji bagi Allah, Tuhan seluruh alam
+Al-Fatihah,3,Yang Maha Pengasih, Maha Penyayang
+Al-Fatihah,4,Pemilik hari pembalasan
+Al-Fatihah,5,Hanya kepada Engkaulah kami menyembah dan hanya kepada Engkaulah kami mohon pertolongan
+Al-Fatihah,6,Tunjukilah kami jalan yang lurus
+Al-Fatihah,7,(Yaitu) jalan orang-orang yang telah Engkau beri nikmat kepadanya; bukan (jalan) mereka yang dimurkai, dan bukan (pula jalan) mereka yang sesat
+Al-Baqarah,1,Alif Lam Mim
+Al-Baqarah,2,Kitab (Al-Quran) ini tidak ada keraguan padanya; petunjuk bagi mereka yang bertakwa
+Al-Baqarah,3,(Yaitu) mereka yang beriman kepada yang gaib, melaksanakan shalat, dan menginfakkan sebagian rezeki yang Kami berikan kepada mereka
+Ali 'Imran,1,Alif Lam Mim
+Ali 'Imran,2,Allah, tidak ada tuhan selain Dia. Yang Hidup kekal, Yang terus menerus mengurus (makhluk-Nya)
+Ali 'Imran,3,Menurunkan Kitab (Al-Quran) kepadamu (Muhammad) dengan sebenarnya; membenarkan kitab yang telah diturunkan sebelumnya dan menurunkan Taurat dan Injil
+An-Nisa',1,Wahai manusia! Bertakwalah kepada Tuhanmu yang telah menciptakan kamu dari diri yang satu (Adam), dan (Allah) menciptakan pasangannya (Hawa) dari (diri)nya; dan dari keduanya Allah memperkembangbiakkan laki-laki dan perempuan yang banyak
+An-Nisa',2,Dan berikanlah kepada anak-anak yatim (yang sudah balig) harta mereka, jangan kamu menukar yang baik dengan yang buruk dan jangan kamu makan harta mereka bersama hartamu. Sungguh, (tindakan menukar dan memakan) itu, adalah dosa yang besar
